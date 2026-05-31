@@ -1,1 +1,33 @@
+body{
+    background:#111;
+    color:white;
+    font-family:Arial,sans-serif;
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
 
+h1{
+    text-align:center;
+}
+
+button{
+    padding:10px;
+    margin:5px;
+    background:#333;
+    color:white;
+    border:none;
+    border-radius:5px;
+}
+
+#stats{
+    border:1px solid #444;
+    padding:10px;
+    margin-bottom:15px;
+}
+
+#game{
+    border:1px solid #444;
+    padding:15px;
+    min-height:300px;
+}
