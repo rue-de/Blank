@@ -495,4 +495,141 @@ function spawnEnemy() {
         </button>
     `;
 }
+function attackEnemy() {
+
+    enemy.hp -= player.attack;
+
+    if (enemy.hp <= 0) {
+
+        winBattle();
+        return;
+    }
+
+    player.hp -= enemy.attack;
+
+    if (player.hp <= 0) {
+
+        player.hp = 0;
+
+        deleteSave();
+
+        document.getElementById(
+            "stats"
+        ).innerHTML = "";
+
+        document.getElementById(
+            "game"
+        ).innerHTML = `
+            <h1>
+            You Died
+            </h1>
+
+            Floor Reached:
+            ${player.floor}
+
+            <br><br>
+
+            Level:
+            ${player.level}
+
+            <br><br>
+
+            Gold:
+            ${player.gold}
+
+            <br><br>
+
+            <button onclick="location.reload()">
+            New Run
+            </button>
+        `;
+
+        return;
+    }
+
+    saveGame();
+    showStats();
+
+    document.getElementById(
+        "enemyHp"
+    ).innerText =
+        enemy.hp;
+}
+
+function winBattle() {
+
+    player.gold += enemy.gold;
+
+    gainExp(enemy.exp);
+
+    if (
+        Math.random() < 0.30
+    ) {
+
+        player.inventory.push({
+            name:
+            "Small Healing Potion",
+            type: "heal",
+            value: 25
+        });
+    }
+
+    player.floor++;
+
+    saveGame();
+
+    showStats();
+
+    if (
+        (player.floor - 1) % 5 === 0
+    ) {
+
+        player.hp =
+            player.maxHp;
+
+        document.getElementById(
+            "game"
+        ).innerHTML = `
+            <h2>
+            Safe Room
+            </h2>
+
+            <p>
+            Boss defeated.
+            </p>
+
+            <p>
+            HP fully restored.
+            </p>
+
+            <button onclick="spawnEnemy()">
+            Continue
+            </button>
+        `;
+
+        return;
+    }
+
+    document.getElementById(
+        "game"
+    ).innerHTML = `
+        <h2>
+        Victory
+        </h2>
+
+        EXP:
+        +${enemy.exp}
+
+        <br>
+
+        Gold:
+        +${enemy.gold}
+
+        <br><br>
+
+        <button onclick="spawnEnemy()">
+        Next Floor
+        </button>
+    `;
+}
 loadGame();
