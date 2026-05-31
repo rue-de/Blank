@@ -97,7 +97,41 @@ const talents = {
         hp: 5
     }
 };
+const itemDatabase = {
 
+    rustySword: {
+        name: "Rusty Sword",
+        rarity: "Common",
+        slot: "weapon",
+        attack: 2,
+        hp: 0
+    },
+
+    ironSword: {
+        name: "Iron Sword",
+        rarity: "Uncommon",
+        slot: "weapon",
+        attack: 4,
+        hp: 0
+    },
+
+    leatherArmor: {
+        name: "Leather Armor",
+        rarity: "Common",
+        slot: "chest",
+        attack: 0,
+        hp: 15
+    },
+
+    silverRing: {
+        name: "Silver Ring",
+        rarity: "Rare",
+        slot: "ring",
+        attack: 1,
+        hp: 10
+    }
+
+};
 let player = {};
 let enemy = null;
 
@@ -365,8 +399,12 @@ function showStats() {
         ${player.gold}<br>
 
         <button onclick="showInventory()">
-        Inventory
-        </button>
+Inventory
+</button>
+
+<button onclick="showEquipment()">
+Equipment
+</button>
     `;
 }
 
