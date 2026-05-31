@@ -239,12 +239,30 @@ function chooseTalent(talent) {
         talents[talent].attack;
 
     player.inventory = [
-        {
-            name: "Small Healing Potion",
-            type: "heal",
-            value: 25
-        }
-    ];
+    {
+        name: "Small Healing Potion",
+        type: "heal",
+        value: 25
+    }
+];
+
+player.equipment = {
+    weapon: null,
+    helmet: null,
+    chest: null,
+    gloves: null,
+    boots: null,
+    ring: null,
+    necklace: null
+};
+
+player.knowledge = {
+    enemies: [],
+    bosses: [],
+    items: []
+};
+
+player.hiddenSkills = [];
 
     saveGame();
 
