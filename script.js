@@ -165,8 +165,71 @@ function newGame() {
     location.reload();
 }
 
-function continueRun() {
-    spawnEnemy();
+function spawnEnemy() {
+
+    let bossFloor =
+        player.floor % 5 === 0;
+
+    if (bossFloor) {
+
+        enemy = {
+            name: "Floor Boss",
+            hp: 60 + player.floor * 10,
+            attack: 8 + player.floor,
+            exp: 20 + player.floor,
+            gold: 15 + player.floor
+        };
+
+    } else {
+
+        const enemyList = [
+            "Goblin",
+            "Wolf",
+            "Bandit",
+            "Slime",
+            "Skeleton",
+            "Spider"
+        ];
+
+        let name =
+            enemyList[
+                Math.floor(
+                    Math.random() *
+                    enemyList.length
+                )
+            ];
+
+        enemy = {
+            name: name,
+            hp: 20 + player.floor * 5,
+            attack: 2 + player.floor,
+            exp: 5 + player.floor,
+            gold: 3 + player.floor
+        };
+    }
+
+    document.getElementById(
+        "game"
+    ).innerHTML = `
+        <h2>
+        Floor ${player.floor}
+        </h2>
+
+        <h3>
+        ${enemy.name}
+        </h3>
+
+        HP:
+        <span id="enemyHp">
+        ${enemy.hp}
+        </span>
+
+        <br><br>
+
+        <button onclick="attackEnemy()">
+        Attack
+        </button>
+    `;
 }
 
 // =========================
