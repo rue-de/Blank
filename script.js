@@ -401,7 +401,57 @@ function showStats() {
         <button onclick="showInventory()">
 Inventory
 </button>
+function showEquipment() {
 
+    let e = player.equipment;
+
+    document.getElementById(
+        "game"
+    ).innerHTML = `
+
+    <h2>Equipment</h2>
+
+    Weapon:
+    ${e.weapon ? e.weapon.name : "None"}
+
+    <br>
+
+    Helmet:
+    ${e.helmet ? e.helmet.name : "None"}
+
+    <br>
+
+    Chest:
+    ${e.chest ? e.chest.name : "None"}
+
+    <br>
+
+    Gloves:
+    ${e.gloves ? e.gloves.name : "None"}
+
+    <br>
+
+    Boots:
+    ${e.boots ? e.boots.name : "None"}
+
+    <br>
+
+    Ring:
+    ${e.ring ? e.ring.name : "None"}
+
+    <br>
+
+    Necklace:
+    ${e.necklace ? e.necklace.name : "None"}
+
+    <br><br>
+
+    <button onclick="spawnEnemy()">
+    Back
+    </button>
+
+    `;
+}
 <button onclick="showEquipment()">
 Equipment
 </button>
@@ -449,37 +499,82 @@ function showInventory() {
         "game"
     ).innerHTML = html;
 }
-
 function useItem(index) {
 
     let item =
         player.inventory[index];
 
-    if (
-        item.type === "heal"
-    ) {
+    if(item.type === "heal"){
 
         player.hp += item.value;
 
-        if (
-            player.hp >
-            player.maxHp
-        ) {
-            player.hp =
-                player.maxHp;
+        if(player.hp > player.maxHp){
+            player.hp = player.maxHp;
         }
 
-        player.inventory.splice(
-            index,
-            1
-        );
+        player.inventory.splice(index,1);
 
-        saveGame();
-        showStats();
-        showInventory();
+    } else if(item.slot){
+
+        equipItem(index);
+
+        return;
     }
-}
 
+    saveGame();
+
+    showStats();
+
+    showInventory();
+}
+function equipItem(index){
+
+    let item =
+        player.inventory[index];
+
+    let slot =
+        item.slot;
+
+    if(player.equipment[slot]){
+
+        let oldItem =
+            player.equipment[slot];
+
+        player.attack -=
+            oldItem.attack || 0;
+
+        player.maxHp -=
+            oldItem.hp || 0;
+
+        player.inventory.push(
+            oldItem
+        );
+    }
+
+    player.attack +=
+        item.attack || 0;
+
+    player.maxHp +=
+        item.hp || 0;
+
+    player.equipment[slot] =
+        item;
+
+    player.inventory.splice(
+        index,
+        1
+    );
+
+    if(player.hp > player.maxHp){
+        player.hp = player.maxHp;
+    }
+
+    saveGame();
+
+    showStats();
+
+    showEquipment();
+}
 // =========================
 // TEMP PLACEHOLDER
 // PART 2 WILL REPLACE THIS
@@ -629,7 +724,23 @@ function winBattle() {
             value: 25
         });
     }
+if(Math.random() < 0.15){
 
+    player.inventory.push(
+        structuredClone(
+            itemDatabase.rustySword
+        )
+    );
+}
+
+if(Math.random() < 0.10){
+
+    player.inventory.push(
+        structuredClone(
+            itemDatabase.leatherArmor
+        )
+    );
+}
     player.floor++;
 
     saveGame();
