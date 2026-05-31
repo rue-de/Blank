@@ -165,7 +165,8 @@ function newGame() {
     location.reload();
 }
 
-function spawnEnemy() {
+function continueGame() {
+    spawnEnemy() {
 
     let bossFloor =
         player.floor % 5 === 0;
@@ -230,7 +231,7 @@ function spawnEnemy() {
         Attack
         </button>
     `;
-}
+}}
 
 // =========================
 // CHARACTER CREATION
