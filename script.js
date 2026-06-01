@@ -128,9 +128,22 @@ const itemDatabase = {
         rarity: "Rare",
         slot: "ring",
         attack: 1,
-        hp: 10
-    }
+        hp: ironSword: {
+    name: "Iron Sword",
+    rarity: "Uncommon",
+    slot: "weapon",
+    attack: 4,
+    hp: 0
+},
 
+knightArmor: {
+    name: "Knight Armor",
+    rarity: "Rare",
+    slot: "chest",
+    attack: 0,
+    hp: 30
+},
+        
 };
 let player = {};
 let enemy = null;
