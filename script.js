@@ -510,6 +510,26 @@ function showEquipment() {
 
     `;
 }
+function showKnowledge(){
+
+    document.getElementById(
+        "game"
+    ).innerHTML = `
+
+        <h2>Book of Knowledge</h2>
+
+        Enemies Discovered:
+        <br>
+
+        ${player.knowledge.enemies.join("<br>")}
+
+        <br><br>
+
+        <button onclick="spawnEnemy()">
+        Back
+        </button>
+    `;
+}
 function useItem(index) {
 
     let item =
