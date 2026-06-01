@@ -1,33 +1,82 @@
 body{
-    background:#111;
-    color:white;
+    margin:0;
+    padding:0;
+    background:#0a0f1a;
+    color:#e8f1ff;
     font-family:Arial,sans-serif;
-    max-width:900px;
-    margin:auto;
-    padding:20px;
 }
 
-h1{
+#container{
+    max-width:700px;
+    margin:auto;
+    padding:10px;
+}
+
+.panel{
+    background:#121b2d;
+    border:1px solid #2e4d85;
+    border-radius:12px;
+    padding:12px;
+    margin-bottom:10px;
+    box-shadow:0 0 10px rgba(50,100,255,.2);
+}
+
+.systemTitle{
     text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    color:#7db7ff;
 }
 
 button{
-    padding:10px;
-    margin:5px;
-    background:#333;
-    color:white;
+    width:100%;
+    margin-top:6px;
+    padding:12px;
     border:none;
-    border-radius:5px;
+    border-radius:8px;
+    background:#24498a;
+    color:white;
+    font-size:16px;
 }
 
-#stats{
-    border:1px solid #444;
-    padding:10px;
-    margin-bottom:15px;
+button:active{
+    transform:scale(.98);
 }
 
-#game{
-    border:1px solid #444;
-    padding:15px;
-    min-height:300px;
+.statBar{
+    background:#222;
+    border-radius:8px;
+    overflow:hidden;
+    margin-top:4px;
+    margin-bottom:8px;
+}
+
+.hpFill{
+    height:18px;
+    background:#27ae60;
+}
+
+.manaFill{
+    height:18px;
+    background:#2980b9;
+}
+
+.common{
+    color:#dddddd;
+}
+
+.uncommon{
+    color:#4caf50;
+}
+
+.rare{
+    color:#2196f3;
+}
+
+.epic{
+    color:#9c27b0;
+}
+
+.legendary{
+    color:#ff9800;
 }
