@@ -374,33 +374,73 @@ function showStats() {
     ).innerHTML = `
         <b>${player.name}</b><br>
 
-        Race:
-        ${player.race}<br>
+        Race: ${player.race}<br>
 
-        Talent:
-        ${player.talent}<br>
+        Talent: ${player.talent}<br>
 
-        Level:
-        ${player.level}<br>
+        Level: ${player.level}<br>
 
-        EXP:
-        ${player.exp}/${player.expToNext}<br>
+        EXP: ${player.exp}/${player.expToNext}<br>
 
-        HP:
-        ${player.hp}/${player.maxHp}<br>
+        HP: ${player.hp}/${player.maxHp}<br>
 
-        Attack:
-        ${player.attack}<br>
+        Attack: ${player.attack}<br>
 
-        Floor:
-        ${player.floor}<br>
+        Floor: ${player.floor}<br>
 
-        Gold:
-        ${player.gold}<br>
+        Gold: ${player.gold}<br>
 
         <button onclick="showInventory()">
-Inventory
-</button>
+        Inventory
+        </button>
+
+        <button onclick="showEquipment()">
+        Equipment
+        </button>
+    `;
+}
+
+function showInventory() {
+
+    let html =
+        "<h2>Inventory</h2>";
+
+    if (
+        player.inventory.length === 0
+    ) {
+        html +=
+            "Inventory Empty";
+    }
+
+    player.inventory.forEach(
+        (item, index) => {
+
+            html += `
+            <div>
+
+            ${item.name}
+
+            <button
+            onclick="useItem(${index})">
+            Use
+            </button>
+
+            </div>
+            `;
+        }
+    );
+
+    html += `
+    <br>
+    <button onclick="spawnEnemy()">
+    Back
+    </button>
+    `;
+
+    document.getElementById(
+        "game"
+    ).innerHTML = html;
+}
 function showEquipment() {
 
     let e = player.equipment;
@@ -451,53 +491,6 @@ function showEquipment() {
     </button>
 
     `;
-}
-<button onclick="showEquipment()">
-Equipment
-</button>
-    `;
-}
-
-function showInventory() {
-
-    let html =
-        "<h2>Inventory</h2>";
-
-    if (
-        player.inventory.length === 0
-    ) {
-        html +=
-            "Inventory Empty";
-    }
-
-    player.inventory.forEach(
-        (item, index) => {
-
-            html += `
-            <div>
-
-            ${item.name}
-
-            <button
-            onclick="useItem(${index})">
-            Use
-            </button>
-
-            </div>
-            `;
-        }
-    );
-
-    html += `
-    <br>
-    <button onclick="spawnEnemy()">
-    Back
-    </button>
-    `;
-
-    document.getElementById(
-        "game"
-    ).innerHTML = html;
 }
 function useItem(index) {
 
