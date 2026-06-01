@@ -415,10 +415,15 @@ function showInventory() {
     player.inventory.forEach(
         (item, index) => {
 
+            let rarity =
+                item.rarity
+                ? `[${item.rarity}] `
+                : "";
+
             html += `
             <div>
 
-            ${item.name}
+            ${rarity}${item.name}
 
             <button
             onclick="useItem(${index})">
