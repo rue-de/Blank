@@ -410,6 +410,9 @@ function showStats() {
         <button onclick="showEquipment()">
         Equipment
         </button>
+        <button onclick="showKnowledge()">
+Knowledge
+</button>
     `;
 }
 
