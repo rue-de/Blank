@@ -657,6 +657,15 @@ function spawnEnemy() {
         </button>
     `;
 }
+if(
+    !player.knowledge.enemies.includes(
+        enemy.name
+    )
+){
+    player.knowledge.enemies.push(
+        enemy.name
+    );
+}
 function attackEnemy() {
 
     enemy.hp -= player.attack;
