@@ -752,6 +752,38 @@ if(Math.random() < 0.10){
         )
     );
 }
+    if(Math.random() < 0.05){
+
+    player.inventory.push(
+        JSON.parse(
+            JSON.stringify(
+                itemDatabase.ironSword
+            )
+        )
+    );
+}
+
+if(Math.random() < 0.02){
+
+    player.inventory.push(
+        JSON.parse(
+            JSON.stringify(
+                itemDatabase.knightArmor
+            )
+        )
+    );
+}
+
+if(Math.random() < 0.01){
+
+    player.inventory.push(
+        JSON.parse(
+            JSON.stringify(
+                itemDatabase.silverRing
+            )
+        )
+    );
+}
     player.floor++;
 
     saveGame();
